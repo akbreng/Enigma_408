@@ -20,6 +20,8 @@ import javax.swing.JComboBox;
 public class EnigmaGUI {
 
 	private JFrame Welcome_Frame;
+	private JTextField textField;
+	private JTextField textField_1;
 
 	/**
 	 * Launch the application.
@@ -47,6 +49,7 @@ public class EnigmaGUI {
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	@SuppressWarnings("deprecation")
 	private void initialize() {
 		int x = 800, y = 750;   //x is width, y is height
 		Welcome_Frame = new JFrame();
@@ -134,6 +137,30 @@ public class EnigmaGUI {
 		lblPlugboard.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPlugboard.setBounds(58, 299, 273, 25);
 		Welcome_Frame.getContentPane().add(lblPlugboard);
+		
+		JPanel panel_3 = new JPanel();
+		panel_3.setBounds(58, 318, 273, 209);
+		Welcome_Frame.getContentPane().add(panel_3);
+		panel_3.setLayout(null);
+		
+		JLabel lblNewLabel_4 = new JLabel("A:");
+		lblNewLabel_4.setBounds(12, 8, 13, 16);
+		panel_3.add(lblNewLabel_4);
+		
+		textField = new JTextField();
+		textField.setLocation(26, 5);
+		textField.setSize(48,22); //doesn't resize properly
+		panel_3.add(textField);
+		textField.setColumns(10);
+		
+		JLabel lblNewLabel_5 = new JLabel("B:");
+		lblNewLabel_5.setBounds(86, 8, 12, 16);
+		panel_3.add(lblNewLabel_5);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(96, 5, 48, 22);
+		panel_3.add(textField_1);
+		textField_1.setColumns(10);
 		Welcome_Frame.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{panel, lblNewLabel, panel_2, btnNewButton, panel_1}));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
