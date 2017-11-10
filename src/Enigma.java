@@ -6,86 +6,13 @@ public class Enigma {
 	private Reflector ref; // reflector
 	private char[] plugboard; //plug board
 
-	public Enigma(Scanner key) { //constructor for the Enigma machine
-		this.key = key;
+	public Enigma() { //constructor for the Enigma machine
 		disks = new Disk[3]; //sets disks to default
-		disks[0] = new Disk(1);
+		disks[0] = new Disk(3);
 		disks[1] = new Disk(2);
-		disks[2] = new Disk(3);
+		disks[2] = new Disk(1);
 		ref = new Reflector('B'); //sets default reflector
 		plugboard = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray(); //sets plug board to be blank
-	}
-	
-	public void promptPlugboard(){
-		// PLUGBOARD
-		int x;
-		plugboard = new char[26];
-		char charinput = 0;
-		
-		boolean selected;
-		boolean paired;
-		int i;
-		for (i = 0; i < 10; i++) {
-			selected = false;
-			System.out.print("Please select letter to pair: ");
-			while (!selected){
-				x = Convert.CharInt(key.next().toUpperCase().charAt(0));
-				if (plugboard[x] == 0) {
-					if (plugboard[Convert.CharInt(charinput)] != 0)
-						System.out.print(charinput + " has been paired already \nPlease enter new letter: ");
-					else if (charinput == Convert.alpu[x])
-						System.out.print(charinput + " can not be pair with itself\nPlease enter new letter: ");
-					else {
-						System.out.print("Please select letter to pair with " + Convert.alpu[x] + ": ");
-						paired = false;
-						while (!paired) {
-							charinput = key.next().toUpperCase().charAt(0);
-							if (plugboard[Convert.CharInt(charinput)] != 0)
-								System.out.print(charinput + " has been paired already \nPlease enter new letter: ");
-							else if (charinput == Convert.alpu[x])
-								System.out.print(charinput + " can not be pair with itself\nPlease enter new letter: ");
-							else {
-								plugboard[x] = charinput;
-								plugboard[Convert.CharInt(charinput)] = Convert.IntChar(x);
-								paired = true;
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-	public void PromptReflector(){
-		//SELECTING REFLECTOR
-		
-				System.out.println("Reflector: A , B , C");
-				System.out.print("Please select Reflector: ");
-				ref = new Reflector(Convert.CharInt(key.next().toUpperCase().charAt(0)));
-	}
-	public void PromptDisks(){
-		// SELECTING THE ORDER OF DISKS
-		
-		int x;
-		System.out.println("Disks: I , II , III , IV , V");
-		System.out.print("Please select first disk: ");
-		x = key.nextInt();
-		disks[0] = new Disk(x);
-		while (x == disks[0].getDisk())
-		{
-			System.out.print("Please select second disk: ");
-			x = key.nextInt();
-			if (x == disks[0].getDisk())
-				System.out.println("Disk can not be used more than once");
-		}
-		disks[1] = new Disk(x);
-		while (x == disks[0].getDisk() || x == disks[1].getDisk())
-		{
-			System.out.print("please select third disk: ");
-			x = key.nextInt();
-			if (x == disks[0].getDisk() || x == disks[1].getDisk())
-				System.out.println("Disk can not be used more than once");
-		}
-		disks[2] = new Disk(x);
 	}
 	
 	public char Encrypt(char charinput) //rotates disks and puts value through the Enigma machine
@@ -107,5 +34,29 @@ public class Enigma {
 		charinput = disks[0].back(charinput);
 		charinput = plugboard[Convert.CharInt(charinput)];
 		return charinput;
+	}
+	
+	public void setDiskPositon(int slot, int position){
+		disks[slot-1].setPosition(position);
+	}
+	
+	public void setDisk(int slot, int disk, int position){
+		disks[slot-1] = new Disk(disk-1, position);
+	}
+	
+	public int getDisk(int slot){
+		return disks[slot-1].getDisk();
+	}
+	
+	public int getPosition(int slot){
+		return disks[slot-1].getPosition();
+	}
+	
+	public void setPlugboard(char[] plug){
+		plugboard = plug;
+	}
+	
+	public char[] getPlugboard(){
+		return plugboard;
 	}
 }
