@@ -7,7 +7,7 @@ public class Main
 		int x;
 		Scanner key = new Scanner(System.in);
 		Enigma enigma = new Enigma(key);
-		
+	    System.out.println("Enter text to encrypt:");
 		str = key.next().toUpperCase();
 		for (x=0;x<str.length();x++)
 			estr = estr + enigma.Encrypt(str.charAt(x));
