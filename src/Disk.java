@@ -25,6 +25,17 @@ public class Disk {
 	}
 	
 	/**
+	 * sets the key for the disk and sets the position
+	 * @param disk
+	 */
+	public Disk(int disk,int position) {
+		this.disk = disks[disk - 1];
+		disknum = disk - 1;
+		this.position = 0;
+		setPosition(position);
+	}
+	
+	/**
 	 * Magic that some how runs the input through the disk
 	 * @param x -input
 	 * @return -returns the new char (x)
@@ -56,8 +67,10 @@ public class Disk {
 		if (x < position) {
 			Convert.ShiftChar(disk, x + 26 - position);
 			position = x;
-		} else if (x == position) {
-		} else {
+		} 
+		else if (x == position) {
+		} 
+		else {
 			Convert.ShiftChar(disk, x - position);
 			position = x;
 		}
