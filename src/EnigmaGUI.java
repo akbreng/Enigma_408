@@ -10,7 +10,7 @@ import java.awt.Color;
 import javax.swing.JTextField;
 import java.awt.Font;
 
-public class enigma_gui {
+public class EnigmaGUI {
 
 	private JFrame Welcome_Frame;
 	private JTextField txtWelcomeToEnigma;
@@ -22,7 +22,7 @@ public class enigma_gui {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					enigma_gui window = new enigma_gui();
+					EnigmaGUI window = new EnigmaGUI();
 					window.Welcome_Frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -34,7 +34,7 @@ public class enigma_gui {
 	/**
 	 * Create the application.
 	 */
-	public enigma_gui() {
+	public EnigmaGUI() {
 		initialize();
 	}
 
@@ -63,7 +63,7 @@ public class enigma_gui {
 		txtWelcomeToEnigma.setColumns(10);
 		
 		JButton btnCustumSettings = new JButton("Custum Settings");
-		btnCustumSettings.setSize(50,50);
+		btnCustumSettings.setSize(null);
 		btnCustumSettings.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
