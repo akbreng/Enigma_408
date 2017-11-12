@@ -22,6 +22,8 @@ public class EnigmaGUI {
 	private JFrame Welcome_Frame;
 	private JTextField textField;
 	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
 
 	/**
 	 * Launch the application.
@@ -148,19 +150,42 @@ public class EnigmaGUI {
 		panel_3.add(lblNewLabel_4);
 		
 		textField = new JTextField();
-		textField.setLocation(26, 5);
-		textField.setSize(48,22); //doesn't resize properly
+		textField.setLocation(25, 5);
+		textField.setSize(28,22); //doesn't resize properly
 		panel_3.add(textField);
 		textField.setColumns(10);
 		
 		JLabel lblNewLabel_5 = new JLabel("B:");
-		lblNewLabel_5.setBounds(86, 8, 12, 16);
+		lblNewLabel_5.setBounds(65, 8, 13, 16);
 		panel_3.add(lblNewLabel_5);
 		
 		textField_1 = new JTextField();
-		textField_1.setBounds(96, 5, 48, 22);
+		textField_1.setBounds(76, 5, 28, 22);
 		panel_3.add(textField_1);
 		textField_1.setColumns(10);
+		
+		JLabel lblC = new JLabel("C:");
+		lblC.setBounds(116, 8, 13, 16);
+		panel_3.add(lblC);
+		
+		
+		textField_2 = new JTextField();
+		textField_2.setBounds(132, 5, 28, 22);
+		panel_3.add(textField_2);
+		textField_2.setColumns(10);
+		
+		JLabel lblD = new JLabel("D:");
+		lblD.setBounds(172, 8, 13, 16);
+		panel_3.add(lblD);
+		
+		textField_3 = new JTextField();
+		textField_3.setBounds(182, 5, 38, 22);
+		panel_3.add(textField_3);
+		textField_3.setColumns(10);
+		
+		JLabel lblE = new JLabel("E:");
+		lblE.setBounds(218, 8, 22, 16);
+		panel_3.add(lblE);
 		Welcome_Frame.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{panel, lblNewLabel, panel_2, btnNewButton, panel_1}));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
