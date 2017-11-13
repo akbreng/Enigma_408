@@ -77,7 +77,7 @@ public class EnigmaGUI {
 		panel.add(lblNewLabel);
 		
 		JPanel panel_2 = new JPanel();
-		panel_2.setBounds(417, 137, 343, 459);
+		panel_2.setBounds(417, 137, 343, 418);
 		Welcome_Frame.getContentPane().add(panel_2);
 		panel_2.setLayout(null);
 		
@@ -251,7 +251,7 @@ public class EnigmaGUI {
 		panel_3.add(btnResetAssociations);
 		
 		JPanel panel_6 = new JPanel();
-		panel_6.setBounds(427, 607, 333, 83);
+		panel_6.setBounds(609, 559, 151, 131);
 		Welcome_Frame.getContentPane().add(panel_6);
 		
 		BufferedImage myPicture = null;
@@ -261,7 +261,6 @@ public class EnigmaGUI {
 			e1.printStackTrace();
 		}
 		JLabel picLabel = new JLabel(new ImageIcon(myPicture));
-		picLabel.getScaledInstance(50, 50, myPicture.SCALE_FAST)));
 		panel_6.add(picLabel);
 		
 		
