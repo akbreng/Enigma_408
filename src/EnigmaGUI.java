@@ -75,6 +75,27 @@ public class EnigmaGUI {
 		JPanel panel_2 = new JPanel();
 		panel_2.setBounds(417, 137, 343, 459);
 		Welcome_Frame.getContentPane().add(panel_2);
+		panel_2.setLayout(null);
+		
+		JLabel lblEncryptText = new JLabel("Encrypt text");
+		lblEncryptText.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblEncryptText.setBounds(12, 13, 167, 16);
+		panel_2.add(lblEncryptText);
+		
+		textField_2 = new JTextField();
+		textField_2.setBounds(12, 42, 319, 101);
+		panel_2.add(textField_2);
+		textField_2.setColumns(10);
+		
+		JLabel lblDecryptedText = new JLabel("Decrypted Text");
+		lblDecryptedText.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblDecryptedText.setBounds(12, 186, 167, 16);
+		panel_2.add(lblDecryptedText);
+		
+		textField_3 = new JTextField();
+		textField_3.setBounds(12, 215, 319, 101);
+		panel_2.add(textField_3);
+		textField_3.setColumns(10);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(170, 280, 10, -59);
@@ -83,7 +104,7 @@ public class EnigmaGUI {
 		JButton btnNewButton = new JButton("Default Settings");
 		btnNewButton.setLocation(133, 137);
 		Welcome_Frame.getContentPane().add(btnNewButton);
-		btnNewButton.setSize(123,25);
+		btnNewButton.setSize(151,25);
 		btnNewButton.setBackground(new Color(0, 191, 255));
 		
 		JPanel panel_4 = new JPanel();
@@ -141,51 +162,71 @@ public class EnigmaGUI {
 		Welcome_Frame.getContentPane().add(lblPlugboard);
 		
 		JPanel panel_3 = new JPanel();
-		panel_3.setBounds(58, 318, 273, 209);
+		panel_3.setBounds(68, 337, 263, 336);
 		Welcome_Frame.getContentPane().add(panel_3);
 		panel_3.setLayout(null);
 		
-		JLabel lblNewLabel_4 = new JLabel("A:");
-		lblNewLabel_4.setBounds(12, 8, 13, 16);
-		panel_3.add(lblNewLabel_4);
-		
 		textField = new JTextField();
-		textField.setLocation(25, 5);
-		textField.setSize(28,22); //doesn't resize properly
+		textField.setBounds(78, 37, 27, 22);
 		panel_3.add(textField);
 		textField.setColumns(10);
 		
-		JLabel lblNewLabel_5 = new JLabel("B:");
-		lblNewLabel_5.setBounds(65, 8, 13, 16);
-		panel_3.add(lblNewLabel_5);
+		JLabel lblDesignateLetter = new JLabel("Designate 10 letter associations");
+		lblDesignateLetter.setBounds(44, 8, 181, 16);
+		panel_3.add(lblDesignateLetter);
+		
+		JLabel label_3 = new JLabel("=");
+		label_3.setBounds(117, 40, 27, 16);
+		panel_3.add(label_3);
 		
 		textField_1 = new JTextField();
-		textField_1.setBounds(76, 5, 28, 22);
+		textField_1.setBounds(135, 37, 27, 22);
 		panel_3.add(textField_1);
 		textField_1.setColumns(10);
 		
-		JLabel lblC = new JLabel("C:");
-		lblC.setBounds(116, 8, 13, 16);
-		panel_3.add(lblC);
+		JLabel lblPairedLetters = new JLabel("Paired Letters");
+		lblPairedLetters.setBounds(88, 84, 86, 16);
+		panel_3.add(lblPairedLetters);
 		
+		JLabel lblNewLabel_4 = new JLabel("New label");
+		lblNewLabel_4.setBounds(49, 128, 56, 16);
+		panel_3.add(lblNewLabel_4);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(132, 5, 28, 22);
-		panel_3.add(textField_2);
-		textField_2.setColumns(10);
+		JLabel lblNewLabel_5 = new JLabel("New label");
+		lblNewLabel_5.setBounds(135, 128, 56, 16);
+		panel_3.add(lblNewLabel_5);
 		
-		JLabel lblD = new JLabel("D:");
-		lblD.setBounds(172, 8, 13, 16);
-		panel_3.add(lblD);
+		JLabel lblNewLabel_6 = new JLabel("New label");
+		lblNewLabel_6.setBounds(49, 178, 56, 16);
+		panel_3.add(lblNewLabel_6);
 		
-		textField_3 = new JTextField();
-		textField_3.setBounds(182, 5, 38, 22);
-		panel_3.add(textField_3);
-		textField_3.setColumns(10);
+		JLabel lblNewLabel_7 = new JLabel("New label");
+		lblNewLabel_7.setBounds(135, 178, 56, 16);
+		panel_3.add(lblNewLabel_7);
 		
-		JLabel lblE = new JLabel("E:");
-		lblE.setBounds(218, 8, 22, 16);
-		panel_3.add(lblE);
+		JLabel lblNewLabel_8 = new JLabel("New label");
+		lblNewLabel_8.setBounds(49, 157, 56, 16);
+		panel_3.add(lblNewLabel_8);
+		
+		JLabel lblNewLabel_9 = new JLabel("New label");
+		lblNewLabel_9.setBounds(135, 157, 56, 16);
+		panel_3.add(lblNewLabel_9);
+		
+		JLabel lblNewLabel_10 = new JLabel("New label");
+		lblNewLabel_10.setBounds(49, 207, 56, 16);
+		panel_3.add(lblNewLabel_10);
+		
+		JLabel lblNewLabel_11 = new JLabel("New label");
+		lblNewLabel_11.setBounds(135, 207, 56, 16);
+		panel_3.add(lblNewLabel_11);
+		
+		JLabel lblNewLabel_12 = new JLabel("New label");
+		lblNewLabel_12.setBounds(49, 236, 56, 16);
+		panel_3.add(lblNewLabel_12);
+		
+		JLabel lblNewLabel_13 = new JLabel("New label");
+		lblNewLabel_13.setBounds(135, 236, 56, 16);
+		panel_3.add(lblNewLabel_13);
 		Welcome_Frame.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{panel, lblNewLabel, panel_2, btnNewButton, panel_1}));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
