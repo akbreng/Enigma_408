@@ -4,31 +4,36 @@ import javax.swing.JFrame;
 import javax.swing.JButton;
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import java.awt.Color;
 import javax.swing.JTextField;
 import java.awt.Font;
 import javax.swing.JPanel;
+import javax.imageio.ImageIO;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import java.awt.FlowLayout;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 import java.awt.Component;
 import javax.swing.JComboBox;
+import java.awt.TextArea;
+import java.awt.TextField;
 
 public class EnigmaGUI {
 
 	private JFrame Welcome_Frame;
 	private JTextField textField;
 	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	public static void run() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -51,7 +56,6 @@ public class EnigmaGUI {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	@SuppressWarnings("deprecation")
 	private void initialize() {
 		int x = 800, y = 750;   //x is width, y is height
 		Welcome_Frame = new JFrame();
@@ -82,30 +86,34 @@ public class EnigmaGUI {
 		lblEncryptText.setBounds(12, 13, 167, 16);
 		panel_2.add(lblEncryptText);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(12, 42, 319, 101);
-		panel_2.add(textField_2);
-		textField_2.setColumns(10);
-		
 		JLabel lblDecryptedText = new JLabel("Decrypted Text");
 		lblDecryptedText.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblDecryptedText.setBounds(12, 186, 167, 16);
+		lblDecryptedText.setBounds(12, 233, 167, 16);
 		panel_2.add(lblDecryptedText);
 		
-		textField_3 = new JTextField();
-		textField_3.setBounds(12, 215, 319, 101);
-		panel_2.add(textField_3);
-		textField_3.setColumns(10);
+		TextArea textArea = new TextArea();
+		textArea.setBounds(10, 39, 323, 137);
+		panel_2.add(textArea);
+		
+		TextArea textArea_1 = new TextArea();
+		textArea_1.setBounds(12, 268, 321, 137);
+		panel_2.add(textArea_1);
+		textArea_1.setEditable(false);
+		
+		JButton btnEncrypt = new JButton("Encrypt");
+		btnEncrypt.setBackground(Color.CYAN);
+		btnEncrypt.setBounds(215, 186, 97, 25);
+		panel_2.add(btnEncrypt);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(170, 280, 10, -59);
 		Welcome_Frame.getContentPane().add(panel_1);
 		
 		JButton btnNewButton = new JButton("Default Settings");
-		btnNewButton.setLocation(133, 137);
+		btnNewButton.setLocation(124, 137);
 		Welcome_Frame.getContentPane().add(btnNewButton);
 		btnNewButton.setSize(151,25);
-		btnNewButton.setBackground(new Color(0, 191, 255));
+		btnNewButton.setBackground(Color.CYAN);
 		
 		JPanel panel_4 = new JPanel();
 		panel_4.setBounds(58, 175, 273, 32);
@@ -114,19 +122,21 @@ public class EnigmaGUI {
 		JLabel lblNewLabel_1 = new JLabel("Rotor 1");
 		panel_4.add(lblNewLabel_1);
 		
-		JComboBox comboBox_1 = new JComboBox();
+		String[] RotorList = {"I", "II", "III", "IV", "V"};
+		String[] RotorStart = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
+		JComboBox comboBox_1 = new JComboBox(RotorList);
 		panel_4.add(comboBox_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Rotor 2");
 		panel_4.add(lblNewLabel_2);
 		
-		JComboBox comboBox = new JComboBox();
+		JComboBox comboBox = new JComboBox(RotorList);
 		panel_4.add(comboBox);
 		
 		JLabel lblNewLabel_3 = new JLabel("Rotor 3");
 		panel_4.add(lblNewLabel_3);
 		
-		JComboBox comboBox_2 = new JComboBox();
+		JComboBox comboBox_2 = new JComboBox(RotorList);
 		panel_4.add(comboBox_2);
 		
 		JPanel panel_5 = new JPanel();
@@ -136,19 +146,19 @@ public class EnigmaGUI {
 		JLabel label = new JLabel("Rotor 1");
 		panel_5.add(label);
 		
-		JComboBox comboBox_6 = new JComboBox();
+		JComboBox comboBox_6 = new JComboBox(RotorStart);
 		panel_5.add(comboBox_6);
 		
 		JLabel label_1 = new JLabel("Rotor 2");
 		panel_5.add(label_1);
 		
-		JComboBox comboBox_7 = new JComboBox();
+		JComboBox comboBox_7 = new JComboBox(RotorStart);
 		panel_5.add(comboBox_7);
 		
 		JLabel label_2 = new JLabel("Rotor 3");
 		panel_5.add(label_2);
 		
-		JComboBox comboBox_8 = new JComboBox();
+		JComboBox comboBox_8 = new JComboBox(RotorStart);
 		panel_5.add(comboBox_8);
 		
 		JLabel lblRotorPosition = new JLabel("Rotor Position");
@@ -172,7 +182,7 @@ public class EnigmaGUI {
 		textField.setColumns(10);
 		
 		JLabel lblDesignateLetter = new JLabel("Designate 10 letter associations");
-		lblDesignateLetter.setBounds(44, 8, 181, 16);
+		lblDesignateLetter.setBounds(28, 8, 197, 16);
 		panel_3.add(lblDesignateLetter);
 		
 		JLabel label_3 = new JLabel("=");
@@ -185,9 +195,9 @@ public class EnigmaGUI {
 		textField_1.setColumns(10);
 		
 		JLabel lblPairedLetters = new JLabel("Paired Letters");
-		lblPairedLetters.setBounds(88, 84, 86, 16);
+		lblPairedLetters.setBounds(78, 99, 86, 16);
 		panel_3.add(lblPairedLetters);
-		
+		//Matched labels0
 		JLabel lblNewLabel_4 = new JLabel("New label");
 		lblNewLabel_4.setBounds(49, 128, 56, 16);
 		panel_3.add(lblNewLabel_4);
@@ -227,6 +237,35 @@ public class EnigmaGUI {
 		JLabel lblNewLabel_13 = new JLabel("New label");
 		lblNewLabel_13.setBounds(135, 236, 56, 16);
 		panel_3.add(lblNewLabel_13);
+		
+		JButton btnNewButton_1 = new JButton("Submit");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnNewButton_1.setBounds(67, 72, 109, 25);
+		panel_3.add(btnNewButton_1);
+		
+		JButton btnResetAssociations = new JButton("Reset Associations");
+		btnResetAssociations.setBounds(49, 265, 144, 25);
+		panel_3.add(btnResetAssociations);
+		
+		JPanel panel_6 = new JPanel();
+		panel_6.setBounds(427, 607, 333, 83);
+		Welcome_Frame.getContentPane().add(panel_6);
+		
+		BufferedImage myPicture = null;
+		try {
+			myPicture = ImageIO.read(new File("SnapCode.jpg"));
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		JLabel picLabel = new JLabel(new ImageIcon(myPicture));
+		picLabel.getScaledInstance(50, 50, myPicture.SCALE_FAST)));
+		panel_6.add(picLabel);
+		
+		
+		
 		Welcome_Frame.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{panel, lblNewLabel, panel_2, btnNewButton, panel_1}));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
