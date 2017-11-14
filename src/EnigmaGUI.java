@@ -54,6 +54,7 @@ public class EnigmaGUI {
 		Welcome_Frame.setBounds(0, 0, x+20, y);
 		Welcome_Frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Welcome_Frame.getContentPane().setLayout(null);
+		Welcome_Frame.setResizable(false);
 		
 		
 		

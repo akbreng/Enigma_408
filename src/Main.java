@@ -51,7 +51,7 @@ public class Main {
 	 */
 	private void initialize() {
 		enigma = new Enigma(); //adds enigma machine
-		int x = 800, y = 750;   //x is width, y is height
+		int x = 800, y = 650;   //x is width, y is height
 		Welcome_Frame = new JFrame();
 		Welcome_Frame.setBounds(0, 0, x+20, y);
 		Welcome_Frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
