@@ -1,9 +1,19 @@
 import java.awt.EventQueue;
 import javax.swing.JFrame;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
+
+import org.eclipse.wb.swing.FocusTraversalOnArray;
+
+import com.sun.xml.internal.ws.api.Component;
+
 import java.awt.Color;
 import javax.swing.JTextField;
 import java.awt.Font;
@@ -49,7 +59,7 @@ public class EnigmaGUI {
 	 */
 	private void initialize() {
 		enigma = new Enigma(); //adds enigma machine
-		int x = 1040, y = 1040;   //x is width, y is height
+		int x = 1040, y = 640;   //x is width, y is height
 		Welcome_Frame = new JFrame();
 		Welcome_Frame.setBounds(0, 0, x+20, y);
 		Welcome_Frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -116,22 +126,21 @@ public class EnigmaGUI {
 		
 		JLabel lblNewLabel_1 = new JLabel("Rotor 1");
 		panel_4.add(lblNewLabel_1);
-		
 		String[] RotorList = {"I", "II", "III", "IV", "V"};
 		String[] RotorStart = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
-		JComboBox<String> comboBox_1 = new JComboBox<>(RotorList);
+		JComboBox<String> comboBox_1 = new JComboBox(RotorList);
 		panel_4.add(comboBox_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Rotor 2");
 		panel_4.add(lblNewLabel_2);
 		
-		JComboBox<String> comboBox = new JComboBox<>(RotorList);
+		JComboBox<String> comboBox = new JComboBox(RotorList);
 		panel_4.add(comboBox);
 		
 		JLabel lblNewLabel_3 = new JLabel("Rotor 3");
 		panel_4.add(lblNewLabel_3);
 		
-		JComboBox<String> comboBox_2 = new JComboBox<>(RotorList);
+		JComboBox<String> comboBox_2 = new JComboBox(RotorList);
 		panel_4.add(comboBox_2);
 		
 		JPanel panel_5 = new JPanel();
@@ -141,19 +150,19 @@ public class EnigmaGUI {
 		JLabel label = new JLabel("Rotor 1");
 		panel_5.add(label);
 		
-		JComboBox<String> comboBox_6 = new JComboBox<>(RotorStart);
+		JComboBox<String> comboBox_6 = new JComboBox(RotorStart);
 		panel_5.add(comboBox_6);
 		
 		JLabel label_1 = new JLabel("Rotor 2");
 		panel_5.add(label_1);
 		
-		JComboBox<String> comboBox_7 = new JComboBox<>(RotorStart);
+		JComboBox<String> comboBox_7 = new JComboBox(RotorStart);
 		panel_5.add(comboBox_7);
 		
 		JLabel label_2 = new JLabel("Rotor 3");
 		panel_5.add(label_2);
 		
-		JComboBox<String> comboBox_8 = new JComboBox<>(RotorStart);
+		JComboBox<String> comboBox_8 = new JComboBox(RotorStart);
 		panel_5.add(comboBox_8);
 		
 		JLabel lblRotorPosition = new JLabel("Rotor Position");
@@ -244,7 +253,7 @@ public class EnigmaGUI {
 		JButton btnResetAssociations = new JButton("Reset Associations");
 		btnResetAssociations.setBounds(49, 265, 144, 25);
 		panel_3.add(btnResetAssociations);
-		/*
+		
 		JPanel panel_6 = new JPanel();
 		panel_6.setBounds(609, 559, 151, 131);
 		Welcome_Frame.getContentPane().add(panel_6);
@@ -260,11 +269,7 @@ public class EnigmaGUI {
 		
 		
 		
-		Welcome_Frame.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{panel, lblNewLabel, panel_2, btnNewButton, panel_1}));
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});*/
+	};
 	
 	}
-}
+
