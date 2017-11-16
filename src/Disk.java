@@ -29,8 +29,8 @@ public class Disk {
 	 * @param disk
 	 */
 	public Disk(int disk,int position) {
-		this.disk = disks[disk - 1];
-		disknum = disk - 1;
+		this.disk = disks[disk];
+		disknum = disk;
 		this.position = 0;
 		setPosition(position);
 	}
