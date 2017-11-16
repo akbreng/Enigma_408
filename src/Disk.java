@@ -19,7 +19,7 @@ public class Disk {
 	 * @param disk
 	 */
 	public Disk(int disk) {
-		this.disk = disks[disk - 1];
+		this.disk = disks[disk];
 		disknum = disk - 1;
 		position = 0;
 	}
