@@ -22,12 +22,17 @@ import javax.swing.JLabel;
 import java.awt.FlowLayout;
 import javax.swing.JComboBox;
 import java.awt.TextArea;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
+
 
 public class EnigmaGUI {
+	public JComboBox<String> comboBox_1;
 	private Enigma enigma;
 	JFrame Welcome_Frame;
 	private JTextField textField;
 	private JTextField textField_1;
+	private final Action action = new SwingAction();
 
 	/**
 	 * Launch the application.
@@ -59,9 +64,9 @@ public class EnigmaGUI {
 	 */
 	private void initialize() {
 		enigma = new Enigma(); //adds enigma machine
-		int x = 1040, y = 640;   //x is width, y is height
+		int x = 840, y = 750;   //x is width, y is height
 		Welcome_Frame = new JFrame();
-		Welcome_Frame.setBounds(0, 0, x+20, y);
+		Welcome_Frame.setBounds(0, 0, x, y);
 		Welcome_Frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Welcome_Frame.getContentPane().setLayout(null);
 		Welcome_Frame.setResizable(false);
@@ -75,41 +80,57 @@ public class EnigmaGUI {
 		panel.setBounds(0, 0, x, y/5);
 		Welcome_Frame.getContentPane().add(panel);
 		
+		//Title of the window
 		JLabel lblNewLabel = new JLabel("Enigma Emulator");
 		lblNewLabel.setVerticalAlignment(SwingConstants.BOTTOM);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 32));
 		panel.add(lblNewLabel);
 		
+		
+		//-------------------------
+		//output-input side of frame
+		//-------------------------
+		
+		//panel for input and out put txt
 		JPanel panel_2 = new JPanel();
 		panel_2.setBounds(417, 137, 343, 418);
 		Welcome_Frame.getContentPane().add(panel_2);
 		panel_2.setLayout(null);
 		
+		//input label for txt box
 		JLabel lblEncryptText = new JLabel("Encrypt text");
 		lblEncryptText.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblEncryptText.setBounds(12, 13, 167, 16);
 		panel_2.add(lblEncryptText);
 		
+		//output label for txt box
 		JLabel lblDecryptedText = new JLabel("Decrypted Text");
 		lblDecryptedText.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblDecryptedText.setBounds(12, 233, 167, 16);
 		panel_2.add(lblDecryptedText);
 		
+		//input txt box
 		TextArea textArea = new TextArea();
 		textArea.setBounds(10, 39, 323, 137);
 		panel_2.add(textArea);
 		
+		//output txt box
 		TextArea textArea_1 = new TextArea();
 		textArea_1.setBounds(12, 268, 321, 137);
 		panel_2.add(textArea_1);
 		textArea_1.setEditable(false);
 		
+		//button to run text through enigma machine
 		JButton btnEncrypt = new JButton("Encrypt");
+		btnEncrypt.setAction(action);
 		btnEncrypt.setBackground(Color.CYAN);
 		btnEncrypt.setBounds(215, 186, 97, 25);
 		panel_2.add(btnEncrypt);
 		
+		//--------------
+		//Panel for default settings button
+		//--------------
 		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(170, 280, 10, -59);
 		Welcome_Frame.getContentPane().add(panel_1);
@@ -120,29 +141,43 @@ public class EnigmaGUI {
 		btnNewButton.setSize(151,25);
 		btnNewButton.setBackground(Color.CYAN);
 		
+		//--------------------
+		//Panel for Rotor titles and Rotor positions
+		//--------------------
 		JPanel panel_4 = new JPanel();
 		panel_4.setBounds(58, 175, 273, 32);
 		Welcome_Frame.getContentPane().add(panel_4);
 		
+		//far left rotor number label and comboBox
 		JLabel lblNewLabel_1 = new JLabel("Rotor 1");
 		panel_4.add(lblNewLabel_1);
 		String[] RotorList = {"I", "II", "III", "IV", "V"};
 		String[] RotorStart = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
-		JComboBox<String> comboBox_1 = new JComboBox(RotorList);
-		panel_4.add(comboBox_1);
 		
+		comboBox_1 = new JComboBox(RotorList);
+		panel_4.add(comboBox_1);
+		comboBox_1.setSelectedIndex(enigma.getDisk(3));
+		
+		
+		//far middle rotor number label and comboBox
 		JLabel lblNewLabel_2 = new JLabel("Rotor 2");
 		panel_4.add(lblNewLabel_2);
 		
 		JComboBox<String> comboBox = new JComboBox(RotorList);
 		panel_4.add(comboBox);
+		comboBox.setSelectedIndex(enigma.getDisk(2));
 		
+		//far right rotor number label and comboBox
 		JLabel lblNewLabel_3 = new JLabel("Rotor 3");
 		panel_4.add(lblNewLabel_3);
 		
 		JComboBox<String> comboBox_2 = new JComboBox(RotorList);
 		panel_4.add(comboBox_2);
+		comboBox_2.setSelectedIndex(enigma.getDisk(1));
 		
+		//--------------
+		//Panel for rotor positions and labels
+		//--------------
 		JPanel panel_5 = new JPanel();
 		panel_5.setBounds(58, 254, 273, 32);
 		Welcome_Frame.getContentPane().add(panel_5);
@@ -152,18 +187,21 @@ public class EnigmaGUI {
 		
 		JComboBox<String> comboBox_6 = new JComboBox(RotorStart);
 		panel_5.add(comboBox_6);
+		comboBox_6.setSelectedIndex(enigma.getPosition(1));
 		
 		JLabel label_1 = new JLabel("Rotor 2");
 		panel_5.add(label_1);
 		
 		JComboBox<String> comboBox_7 = new JComboBox(RotorStart);
 		panel_5.add(comboBox_7);
+		comboBox_7.setSelectedIndex(enigma.getPosition(2));
 		
 		JLabel label_2 = new JLabel("Rotor 3");
 		panel_5.add(label_2);
 		
 		JComboBox<String> comboBox_8 = new JComboBox(RotorStart);
 		panel_5.add(comboBox_8);
+		comboBox_8.setSelectedIndex(enigma.getPosition(3));
 		
 		JLabel lblRotorPosition = new JLabel("Rotor Position");
 		lblRotorPosition.setHorizontalAlignment(SwingConstants.CENTER);
@@ -202,44 +240,44 @@ public class EnigmaGUI {
 		lblPairedLetters.setBounds(78, 99, 86, 16);
 		panel_3.add(lblPairedLetters);
 		//Matched labels0
-		JLabel lblNewLabel_4 = new JLabel("New label");
-		lblNewLabel_4.setBounds(49, 128, 56, 16);
+		JLabel lblNewLabel_4 = new JLabel("1");
+		lblNewLabel_4.setBounds(49, 130, 56, 16);
 		panel_3.add(lblNewLabel_4);
 		
-		JLabel lblNewLabel_5 = new JLabel("New label");
-		lblNewLabel_5.setBounds(135, 128, 56, 16);
+		JLabel lblNewLabel_5 = new JLabel("2");
+		lblNewLabel_5.setBounds(135, 130, 56, 16);
 		panel_3.add(lblNewLabel_5);
 		
-		JLabel lblNewLabel_6 = new JLabel("New label");
-		lblNewLabel_6.setBounds(49, 178, 56, 16);
-		panel_3.add(lblNewLabel_6);
-		
-		JLabel lblNewLabel_7 = new JLabel("New label");
-		lblNewLabel_7.setBounds(135, 178, 56, 16);
-		panel_3.add(lblNewLabel_7);
-		
-		JLabel lblNewLabel_8 = new JLabel("New label");
-		lblNewLabel_8.setBounds(49, 157, 56, 16);
+		JLabel lblNewLabel_8 = new JLabel("3");
+		lblNewLabel_8.setBounds(49, 152, 56, 16);
 		panel_3.add(lblNewLabel_8);
 		
-		JLabel lblNewLabel_9 = new JLabel("New label");
-		lblNewLabel_9.setBounds(135, 157, 56, 16);
+		JLabel lblNewLabel_9 = new JLabel("4");
+		lblNewLabel_9.setBounds(135, 152, 56, 16);
 		panel_3.add(lblNewLabel_9);
 		
-		JLabel lblNewLabel_10 = new JLabel("New label");
-		lblNewLabel_10.setBounds(49, 207, 56, 16);
+		JLabel lblNewLabel_6 = new JLabel("5");
+		lblNewLabel_6.setBounds(49, 174, 56, 16);
+		panel_3.add(lblNewLabel_6);
+		
+		JLabel lblNewLabel_7 = new JLabel("6");
+		lblNewLabel_7.setBounds(135, 174, 56, 16);
+		panel_3.add(lblNewLabel_7);
+		
+		JLabel lblNewLabel_10 = new JLabel("7");
+		lblNewLabel_10.setBounds(49, 196, 56, 16);
 		panel_3.add(lblNewLabel_10);
 		
-		JLabel lblNewLabel_11 = new JLabel("New label");
-		lblNewLabel_11.setBounds(135, 207, 56, 16);
+		JLabel lblNewLabel_11 = new JLabel("8");
+		lblNewLabel_11.setBounds(135, 196, 56, 16);
 		panel_3.add(lblNewLabel_11);
 		
-		JLabel lblNewLabel_12 = new JLabel("New label");
-		lblNewLabel_12.setBounds(49, 236, 56, 16);
+		JLabel lblNewLabel_12 = new JLabel("9");
+		lblNewLabel_12.setBounds(49, 218, 56, 16);
 		panel_3.add(lblNewLabel_12);
 		
-		JLabel lblNewLabel_13 = new JLabel("New label");
-		lblNewLabel_13.setBounds(135, 236, 56, 16);
+		JLabel lblNewLabel_13 = new JLabel("10");
+		lblNewLabel_13.setBounds(135, 218, 56, 16);
 		panel_3.add(lblNewLabel_13);
 		
 		JButton btnNewButton_1 = new JButton("Submit");
@@ -271,5 +309,15 @@ public class EnigmaGUI {
 		
 	};
 	
+	private class SwingAction extends AbstractAction {
+		public SwingAction() {
+			putValue(NAME, "Encrypt");
+			putValue(SHORT_DESCRIPTION, "Encrypt the input");
+		}
+		public void actionPerformed(ActionEvent e) {
+			enigma.setDiskPosition(1, comboBox_1.getSelectedIndex());
+			
+		}
+	}
 	}
 

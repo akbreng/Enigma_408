@@ -36,7 +36,7 @@ public class Enigma {
 		return charinput;
 	}
 	
-	public void setDiskPositon(int slot, int position){
+	public void setDiskPosition(int slot, int position){
 		disks[slot-1].setPosition(position);
 	}
 	
