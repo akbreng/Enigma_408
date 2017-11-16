@@ -28,6 +28,13 @@ import javax.swing.Action;
 
 public class EnigmaGUI {
 	public JComboBox<String> comboBox_1;
+	public JComboBox<String> comboBox_2;
+	public JComboBox<String> comboBox;
+	public JComboBox<String> comboBox_6;
+	public JComboBox<String> comboBox_7;
+	public JComboBox<String> comboBox_8;
+	public TextArea textArea_1;
+	public TextArea textArea;
 	private Enigma enigma;
 	JFrame Welcome_Frame;
 	private JTextField textField;
@@ -111,12 +118,12 @@ public class EnigmaGUI {
 		panel_2.add(lblDecryptedText);
 		
 		//input txt box
-		TextArea textArea = new TextArea();
+		textArea = new TextArea();
 		textArea.setBounds(10, 39, 323, 137);
 		panel_2.add(textArea);
 		
 		//output txt box
-		TextArea textArea_1 = new TextArea();
+		textArea_1 = new TextArea();
 		textArea_1.setBounds(12, 268, 321, 137);
 		panel_2.add(textArea_1);
 		textArea_1.setEditable(false);
@@ -163,7 +170,7 @@ public class EnigmaGUI {
 		JLabel lblNewLabel_2 = new JLabel("Rotor 2");
 		panel_4.add(lblNewLabel_2);
 		
-		JComboBox<String> comboBox = new JComboBox(RotorList);
+		comboBox = new JComboBox(RotorList);
 		panel_4.add(comboBox);
 		comboBox.setSelectedIndex(enigma.getDisk(2));
 		
@@ -171,7 +178,7 @@ public class EnigmaGUI {
 		JLabel lblNewLabel_3 = new JLabel("Rotor 3");
 		panel_4.add(lblNewLabel_3);
 		
-		JComboBox<String> comboBox_2 = new JComboBox(RotorList);
+		comboBox_2 = new JComboBox(RotorList);
 		panel_4.add(comboBox_2);
 		comboBox_2.setSelectedIndex(enigma.getDisk(1));
 		
@@ -315,7 +322,11 @@ public class EnigmaGUI {
 			putValue(SHORT_DESCRIPTION, "Encrypt the input");
 		}
 		public void actionPerformed(ActionEvent e) {
-			enigma.setDiskPosition(1, comboBox_1.getSelectedIndex());
+			enigma.setDisk(1, comboBox_1.getSelectedIndex(), comboBox_6.getSelectedIndex());
+			enigma.setDisk(2, comboBox.getSelectedIndex(), comboBox_7.getSelectedIndex());
+			enigma.setDisk(3, comboBox_2.getSelectedIndex(), comboBox_8.getSelectedIndex());
+			
+			
 			
 		}
 	}
