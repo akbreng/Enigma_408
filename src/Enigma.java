@@ -8,9 +8,9 @@ public class Enigma {
 
 	public Enigma() { //constructor for the Enigma machine
 		disks = new Disk[3]; //sets disks to default
-		disks[0] = new Disk(3);
-		disks[1] = new Disk(2);
-		disks[2] = new Disk(1);
+		disks[0] = new Disk(2);
+		disks[1] = new Disk(1);
+		disks[2] = new Disk(0);
 		ref = new Reflector('B'); //sets default reflector
 		plugboard = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray(); //sets plug board to be blank
 	}
@@ -37,19 +37,19 @@ public class Enigma {
 	}
 	
 	public void setDiskPosition(int slot, int position){
-		disks[slot-1].setPosition(position);
+		disks[slot].setPosition(position);
 	}
 	
 	public void setDisk(int slot, int disk, int position){
-		disks[slot-1] = new Disk(disk, position);
+		disks[slot] = new Disk(disk, position);
 	}
 	
 	public int getDisk(int slot){
-		return disks[slot-1].getDisk();
+		return disks[slot].getDisk();
 	}
 	
 	public int getPosition(int slot){
-		return disks[slot-1].getPosition();
+		return disks[slot].getPosition();
 	}
 	
 	public void setPlugboard(char[] plug){
