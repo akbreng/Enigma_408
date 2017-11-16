@@ -14,7 +14,15 @@ public class Enigma {
 		ref = new Reflector('B'); //sets default reflector
 		plugboard = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray(); //sets plug board to be blank
 	}
-	
+	public String Encrypt(String stringInput)
+	{
+		String str = "";
+		for(int x = 0; x < stringInput.length(); x++)
+		{
+			str += Encrypt(stringInput.charAt(x));
+		}
+		return str;
+	}
 	public char Encrypt(char charinput) //rotates disks and puts value through the Enigma machine
 	{
 		disks[0].addPosition();

@@ -192,21 +192,21 @@ public class EnigmaGUI {
 		JLabel label = new JLabel("Rotor 1");
 		panel_5.add(label);
 		
-		JComboBox<String> comboBox_6 = new JComboBox(RotorStart);
+		comboBox_6 = new JComboBox(RotorStart);
 		panel_5.add(comboBox_6);
 		comboBox_6.setSelectedIndex(enigma.getPosition(1));
 		
 		JLabel label_1 = new JLabel("Rotor 2");
 		panel_5.add(label_1);
 		
-		JComboBox<String> comboBox_7 = new JComboBox(RotorStart);
+		comboBox_7 = new JComboBox(RotorStart);
 		panel_5.add(comboBox_7);
 		comboBox_7.setSelectedIndex(enigma.getPosition(2));
 		
 		JLabel label_2 = new JLabel("Rotor 3");
 		panel_5.add(label_2);
 		
-		JComboBox<String> comboBox_8 = new JComboBox(RotorStart);
+		comboBox_8 = new JComboBox(RotorStart);
 		panel_5.add(comboBox_8);
 		comboBox_8.setSelectedIndex(enigma.getPosition(3));
 		
@@ -326,7 +326,7 @@ public class EnigmaGUI {
 			enigma.setDisk(2, comboBox.getSelectedIndex(), comboBox_7.getSelectedIndex());
 			enigma.setDisk(3, comboBox_2.getSelectedIndex(), comboBox_8.getSelectedIndex());
 			
-			
+			textArea_1.setText(enigma.Encrypt(textArea.getText()));
 			
 		}
 	}
