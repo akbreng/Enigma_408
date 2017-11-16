@@ -41,7 +41,7 @@ public class Enigma {
 	}
 	
 	public void setDisk(int slot, int disk, int position){
-		disks[slot-1] = new Disk(disk-1, position);
+		disks[slot-1] = new Disk(disk, position);
 	}
 	
 	public int getDisk(int slot){
