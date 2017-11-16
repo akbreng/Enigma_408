@@ -17,14 +17,17 @@ public class Enigma {
 	public String Encrypt(String stringInput)
 	{
 		String str = "";
+		
 		for(int x = 0; x < stringInput.length(); x++)
 		{
-			str += Encrypt(stringInput.charAt(x));
+			str = str + Encrypt(stringInput.charAt(x));
+			System.out.println(stringInput);
 		}
 		return str;
 	}
 	public char Encrypt(char charinput) //rotates disks and puts value through the Enigma machine
 	{
+		System.out.println(charinput);
 		disks[0].addPosition();
 		if (disks[0].getTurnOver()){
 			disks[1].addPosition();
@@ -32,7 +35,7 @@ public class Enigma {
 				disks[2].addPosition();
 			}
 		}
-		charinput = plugboard[Convert.CharInt(charinput)];
+		//charinput = plugboard[Convert.CharInt(charinput)];
 		charinput = disks[0].forward(charinput);
 		charinput = disks[1].forward(charinput);
 		charinput = disks[2].forward(charinput);

@@ -163,7 +163,7 @@ public class EnigmaGUI {
 		
 		comboBox_1 = new JComboBox(RotorList);
 		panel_4.add(comboBox_1);
-		comboBox_1.setSelectedIndex(enigma.getDisk(3));
+		comboBox_1.setSelectedIndex(enigma.getDisk(2));
 		
 		
 		//far middle rotor number label and comboBox
@@ -172,7 +172,7 @@ public class EnigmaGUI {
 		
 		comboBox = new JComboBox(RotorList);
 		panel_4.add(comboBox);
-		comboBox.setSelectedIndex(enigma.getDisk(2));
+		comboBox.setSelectedIndex(enigma.getDisk(1));
 		
 		//far right rotor number label and comboBox
 		JLabel lblNewLabel_3 = new JLabel("Rotor 3");
@@ -180,7 +180,7 @@ public class EnigmaGUI {
 		
 		comboBox_2 = new JComboBox(RotorList);
 		panel_4.add(comboBox_2);
-		comboBox_2.setSelectedIndex(enigma.getDisk(1));
+		comboBox_2.setSelectedIndex(enigma.getDisk(0));
 		
 		//--------------
 		//Panel for rotor positions and labels
@@ -194,21 +194,21 @@ public class EnigmaGUI {
 		
 		comboBox_6 = new JComboBox(RotorStart);
 		panel_5.add(comboBox_6);
-		comboBox_6.setSelectedIndex(enigma.getPosition(1));
+		comboBox_6.setSelectedIndex(enigma.getPosition(0));
 		
 		JLabel label_1 = new JLabel("Rotor 2");
 		panel_5.add(label_1);
 		
 		comboBox_7 = new JComboBox(RotorStart);
 		panel_5.add(comboBox_7);
-		comboBox_7.setSelectedIndex(enigma.getPosition(2));
+		comboBox_7.setSelectedIndex(enigma.getPosition(1));
 		
 		JLabel label_2 = new JLabel("Rotor 3");
 		panel_5.add(label_2);
 		
 		comboBox_8 = new JComboBox(RotorStart);
 		panel_5.add(comboBox_8);
-		comboBox_8.setSelectedIndex(enigma.getPosition(3));
+		comboBox_8.setSelectedIndex(enigma.getPosition(2));
 		
 		JLabel lblRotorPosition = new JLabel("Rotor Position");
 		lblRotorPosition.setHorizontalAlignment(SwingConstants.CENTER);
@@ -322,9 +322,9 @@ public class EnigmaGUI {
 			putValue(SHORT_DESCRIPTION, "Encrypt the input");
 		}
 		public void actionPerformed(ActionEvent e) {
-			enigma.setDisk(1, comboBox_1.getSelectedIndex(), comboBox_6.getSelectedIndex());
-			enigma.setDisk(2, comboBox.getSelectedIndex(), comboBox_7.getSelectedIndex());
-			enigma.setDisk(3, comboBox_2.getSelectedIndex(), comboBox_8.getSelectedIndex());
+			enigma.setDisk(0, comboBox_1.getSelectedIndex(), comboBox_6.getSelectedIndex());
+			enigma.setDisk(1, comboBox.getSelectedIndex(), comboBox_7.getSelectedIndex());
+			enigma.setDisk(2, comboBox_2.getSelectedIndex(), comboBox_8.getSelectedIndex());
 			
 			textArea_1.setText(enigma.Encrypt(textArea.getText()));
 			
