@@ -40,6 +40,8 @@ public class EnigmaGUI {
 	private JTextField textField;
 	private JTextField textField_1;
 	private final Action action = new SwingAction();
+	private final Action action_1 = new SwingAction_1();
+	private final Action action_2 = new SwingAction_2();
 
 	/**
 	 * Launch the application.
@@ -143,6 +145,7 @@ public class EnigmaGUI {
 		Welcome_Frame.getContentPane().add(panel_1);
 		
 		JButton btnNewButton = new JButton("Default Settings");
+		btnNewButton.setAction(action_1);
 		btnNewButton.setLocation(124, 137);
 		Welcome_Frame.getContentPane().add(btnNewButton);
 		btnNewButton.setSize(151,25);
@@ -288,6 +291,7 @@ public class EnigmaGUI {
 		panel_3.add(lblNewLabel_13);
 		
 		JButton btnNewButton_1 = new JButton("Submit");
+		btnNewButton_1.setAction(action_2);
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -328,6 +332,28 @@ public class EnigmaGUI {
 			
 			textArea_1.setText(enigma.Encrypt(textArea.getText()));
 			
+		}
+	}
+	private class SwingAction_1 extends AbstractAction {
+		public SwingAction_1() {
+			putValue(NAME, "Default Settings");
+			putValue(SHORT_DESCRIPTION, "Reset settings to their default values");
+		}
+		public void actionPerformed(ActionEvent e) {
+			comboBox_1.setSelectedIndex(0);
+			comboBox.setSelectedIndex(1);
+			comboBox_2.setSelectedIndex(2);
+			comboBox_6.setSelectedIndex(0);
+			comboBox_7.setSelectedIndex(0);
+			comboBox_8.setSelectedIndex(0);
+		}
+	}
+	private class SwingAction_2 extends AbstractAction {
+		public SwingAction_2() {
+			putValue(NAME, "Submit");
+			putValue(SHORT_DESCRIPTION, "Submit your letter designation");
+		}
+		public void actionPerformed(ActionEvent e) {
 		}
 	}
 	}
