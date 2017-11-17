@@ -354,7 +354,7 @@ public class EnigmaGUI {
 			putValue(SHORT_DESCRIPTION, "Submit your letter designation");
 		}
 		public void actionPerformed(ActionEvent e) {
-			System.out.println(enigma.getPlugboard());
+			
 		}
 	}
 	}

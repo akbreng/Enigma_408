@@ -22,14 +22,14 @@ public class Enigma {
 		for(int x = 0; x < stringInput.length(); x++)
 		{
 			str = str + Encrypt(stringInput.charAt(x));
-			System.out.println(stringInput);
+			
 		}
 		return str;
 	}
 	
 	public char Encrypt(char charinput) //rotates disks and puts value through the Enigma machine
 	{
-		System.out.println(charinput);
+		
 		disks[0].addPosition();
 		if (disks[0].getTurnOver()){
 			disks[1].addPosition();

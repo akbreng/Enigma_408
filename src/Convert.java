@@ -4,10 +4,11 @@ public class Convert {
 	public static int CharInt (char nxt)
 	{
 		//error is here, changed the final return to 25 but still not right
-		System.out.println(nxt);
+		
 		int z;
 		for (z=0; z<26; z++ )
 		{
+			System.out.println(alpu[z]);
 			if (nxt == alpu[z])
 				return z;				
 		}

@@ -41,8 +41,6 @@ public class Disk {
 	 * @return -returns the new char (x)
 	 */
 	public char forward(char x) {
-		System.out.println(x);
-		System.out.println(Convert.CharInt(x));
 		x = disk[Convert.CharInt(x)%26];
 		return Convert.IntChar((Convert.CharInt(x) + (26 - position)) % 26);
 	}
