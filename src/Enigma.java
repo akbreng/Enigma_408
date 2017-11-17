@@ -46,7 +46,7 @@ public class Enigma {
 		charinput = disks[1].back(charinput);
 		charinput = disks[0].back(charinput);
 		charinput = plugboard[Convert.CharInt(charinput)];
-	//	return charinput;
+		return charinput;
 	}
 	
 	public void setDiskPosition(int slot, int position){
