@@ -330,7 +330,7 @@ public class EnigmaGUI {
 			enigma.setDisk(1, comboBox.getSelectedIndex(), comboBox_7.getSelectedIndex());
 			enigma.setDisk(2, comboBox_2.getSelectedIndex(), comboBox_8.getSelectedIndex());
 			
-			textArea_1.setText(enigma.Encrypt(textArea.getText()));
+			textArea_1.setText(enigma.Encrypt(textArea.getText().toUpperCase()));
 			
 		}
 	}
