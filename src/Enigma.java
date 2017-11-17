@@ -14,6 +14,7 @@ public class Enigma {
 		ref = new Reflector('B'); //sets default reflector
 		plugboard = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray(); //sets plug board to be blank
 	}
+	
 	public String Encrypt(String stringInput)
 	{
 		String str = "";
@@ -25,6 +26,7 @@ public class Enigma {
 		}
 		return str;
 	}
+	
 	public char Encrypt(char charinput) //rotates disks and puts value through the Enigma machine
 	{
 		System.out.println(charinput);
@@ -35,7 +37,7 @@ public class Enigma {
 				disks[2].addPosition();
 			}
 		}
-		//charinput = plugboard[Convert.CharInt(charinput)];
+		charinput = plugboard[Convert.CharInt(charinput)];
 		charinput = disks[0].forward(charinput);
 		charinput = disks[1].forward(charinput);
 		charinput = disks[2].forward(charinput);
