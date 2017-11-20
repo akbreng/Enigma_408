@@ -42,6 +42,8 @@ public class EnigmaGUI {
 	private final Action action = new SwingAction();
 	private final Action action_1 = new SwingAction_1();
 	private final Action action_2 = new SwingAction_2();
+	private int i = 0;
+	private JLabel[] labels;
 
 	/**
 	 * Launch the application.
@@ -258,21 +260,21 @@ public class EnigmaGUI {
 		lblNewLabel_5.setBounds(135, 130, 56, 16);
 		panel_3.add(lblNewLabel_5);
 		
-		JLabel lblNewLabel_8 = new JLabel("3");
-		lblNewLabel_8.setBounds(49, 152, 56, 16);
-		panel_3.add(lblNewLabel_8);
-		
-		JLabel lblNewLabel_9 = new JLabel("4");
-		lblNewLabel_9.setBounds(135, 152, 56, 16);
-		panel_3.add(lblNewLabel_9);
-		
-		JLabel lblNewLabel_6 = new JLabel("5");
-		lblNewLabel_6.setBounds(49, 174, 56, 16);
+		JLabel lblNewLabel_6 = new JLabel("3");
+		lblNewLabel_6.setBounds(49, 152, 56, 16);
 		panel_3.add(lblNewLabel_6);
 		
-		JLabel lblNewLabel_7 = new JLabel("6");
-		lblNewLabel_7.setBounds(135, 174, 56, 16);
+		JLabel lblNewLabel_7 = new JLabel("4");
+		lblNewLabel_7.setBounds(135, 152, 56, 16);
 		panel_3.add(lblNewLabel_7);
+		
+		JLabel lblNewLabel_8 = new JLabel("5");
+		lblNewLabel_8.setBounds(49, 174, 56, 16);
+		panel_3.add(lblNewLabel_8);
+		
+		JLabel lblNewLabel_9 = new JLabel("6");
+		lblNewLabel_9.setBounds(135, 174, 56, 16);
+		panel_3.add(lblNewLabel_9);
 		
 		JLabel lblNewLabel_10 = new JLabel("7");
 		lblNewLabel_10.setBounds(49, 196, 56, 16);
@@ -290,6 +292,10 @@ public class EnigmaGUI {
 		lblNewLabel_13.setBounds(135, 218, 56, 16);
 		panel_3.add(lblNewLabel_13);
 		
+		labels = new JLabel[] {lblNewLabel_4, lblNewLabel_5, lblNewLabel_6, lblNewLabel_7
+				, lblNewLabel_8, lblNewLabel_9, lblNewLabel_10, lblNewLabel_11, lblNewLabel_12, lblNewLabel_13};
+		
+		int aa = 0;
 		JButton btnNewButton_1 = new JButton("Submit");
 		btnNewButton_1.setAction(action_2);
 		btnNewButton_1.addActionListener(new ActionListener() {
@@ -354,6 +360,19 @@ public class EnigmaGUI {
 			putValue(SHORT_DESCRIPTION, "Submit your letter designation");
 		}
 		public void actionPerformed(ActionEvent e) {
+			if(i == 0)
+				enigma.resetPlugboard();
+			char a = textField.getText().toUpperCase().charAt(0);
+			char b = textField_1.getText().toUpperCase().charAt(0);
+			while(i > 10)
+			{
+			if(enigma.checkPair(a, b) == true)
+			{
+				enigma.customizePlugboard(a, b);
+				labels[i].setText(a + " = " + b);
+				i++;
+			}
+			}
 			
 		}
 	}

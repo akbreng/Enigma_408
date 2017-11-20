@@ -72,4 +72,23 @@ public class Enigma {
 	public char[] getPlugboard(){
 		return plugboard;
 	}
+	
+	public boolean checkPair(char a, char b){
+		if(plugboard[Convert.CharInt(a)] == 0 && plugboard[Convert.CharInt(b)] == 0)
+			return true;
+		return false;
+	}
+	
+	public void customizePlugboard(char a, char b)
+	{
+		plugboard[Convert.CharInt(a)] = b;
+		plugboard[Convert.CharInt(b)] = a;
+		
+		
+	}
+	public void resetPlugboard() {
+		plugboard = new char[26];
+		
+	}
+	
 }

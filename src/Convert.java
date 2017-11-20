@@ -8,7 +8,6 @@ public class Convert {
 		int z;
 		for (z=0; z<26; z++ )
 		{
-			System.out.println(alpu[z]);
 			if (nxt == alpu[z])
 				return z;				
 		}
