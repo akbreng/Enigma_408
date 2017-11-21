@@ -44,6 +44,7 @@ public class EnigmaGUI {
 	private final Action action_2 = new SwingAction_2();
 	private int i = 0;
 	private JLabel[] labels;
+	private final Action action_3 = new SwingAction_3();
 
 	/**
 	 * Launch the application.
@@ -306,6 +307,7 @@ public class EnigmaGUI {
 		panel_3.add(btnNewButton_1);
 		
 		JButton btnResetAssociations = new JButton("Reset Associations");
+		btnResetAssociations.setAction(action_3);
 		btnResetAssociations.setBounds(49, 265, 144, 25);
 		panel_3.add(btnResetAssociations);
 		
@@ -337,7 +339,8 @@ public class EnigmaGUI {
 			enigma.setDisk(2, comboBox_2.getSelectedIndex(), comboBox_8.getSelectedIndex());
 			
 			textArea_1.setText(enigma.Encrypt(textArea.getText().toUpperCase()));
-			
+			enigma.fillPlugboard();
+			System.out.println(enigma.getPlugboard());
 		}
 	}
 	private class SwingAction_1 extends AbstractAction {
@@ -364,9 +367,7 @@ public class EnigmaGUI {
 				enigma.resetPlugboard();
 			char a = textField.getText().toUpperCase().charAt(0);
 			char b = textField_1.getText().toUpperCase().charAt(0);
-			while(i > 10)
-			{
-			if(enigma.checkPair(a, b) == true)
+			if(enigma.checkPair(a, b) == true && i < 10)
 			{
 				enigma.customizePlugboard(a, b);
 				labels[i].setText(a + " = " + b);
@@ -374,6 +375,20 @@ public class EnigmaGUI {
 			}
 			}
 			
+		}
+	
+	private class SwingAction_3 extends AbstractAction {
+		public SwingAction_3() {
+			putValue(NAME, "Reset Plugboard");
+			putValue(SHORT_DESCRIPTION, "Resets the plugboard associations");
+		}
+		public void actionPerformed(ActionEvent e) {
+			enigma.resetPlugboard();
+			for(int i = 0; i < 10; i++)
+			{
+				labels[i].setText(Integer.toString(i+1));
+				i++;
+			}
 		}
 	}
 	}

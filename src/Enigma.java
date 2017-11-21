@@ -75,6 +75,8 @@ public class Enigma {
 	
 	public boolean checkPair(char a, char b){
 		if(plugboard[Convert.CharInt(a)] == 0 && plugboard[Convert.CharInt(b)] == 0)
+			return true; 
+		if(plugboard[Convert.CharInt(a)] == Convert.CharInt(a) && plugboard[Convert.CharInt(b)] == Convert.CharInt(b))
 			return true;
 		return false;
 	}
@@ -89,6 +91,18 @@ public class Enigma {
 	public void resetPlugboard() {
 		plugboard = new char[26];
 		
+	}
+	
+	public void fillPlugboard()
+	{
+		for(int i = 0; i < 26; i++)
+		{
+			if(plugboard[i] == 0)
+			{
+				System.out.println("yes");
+				plugboard[i] = Convert.IntChar(i);
+			}
+		}
 	}
 	
 }
