@@ -337,9 +337,9 @@ public class EnigmaGUI {
 			enigma.setDisk(0, comboBox_1.getSelectedIndex(), comboBox_6.getSelectedIndex());
 			enigma.setDisk(1, comboBox.getSelectedIndex(), comboBox_7.getSelectedIndex());
 			enigma.setDisk(2, comboBox_2.getSelectedIndex(), comboBox_8.getSelectedIndex());
-			
-			textArea_1.setText(enigma.Encrypt(textArea.getText().toUpperCase()));
 			enigma.fillPlugboard();
+			textArea_1.setText(enigma.Encrypt(textArea.getText().toUpperCase()));
+			
 			System.out.println(enigma.getPlugboard());
 		}
 	}
@@ -355,6 +355,13 @@ public class EnigmaGUI {
 			comboBox_6.setSelectedIndex(0);
 			comboBox_7.setSelectedIndex(0);
 			comboBox_8.setSelectedIndex(0);
+			enigma.resetPlugboard();
+			enigma.fillPlugboard();
+			for(int j = 0; j < 10; j++)
+			{
+				labels[j].setText(Integer.toString(j+1));
+			}
+			i = 0;
 		}
 	}
 	private class SwingAction_2 extends AbstractAction {
@@ -363,6 +370,8 @@ public class EnigmaGUI {
 			putValue(SHORT_DESCRIPTION, "Submit your letter designation");
 		}
 		public void actionPerformed(ActionEvent e) {
+		if(!textField.getText().isEmpty() && !textField_1.getText().isEmpty())
+		{
 			if(i == 0)
 				enigma.resetPlugboard();
 			char a = textField.getText().toUpperCase().charAt(0);
@@ -375,6 +384,7 @@ public class EnigmaGUI {
 			}
 			}
 			
+		}
 		}
 	
 	private class SwingAction_3 extends AbstractAction {
