@@ -348,9 +348,9 @@ public class EnigmaGUI {
 			putValue(SHORT_DESCRIPTION, "Reset settings to their default values");
 		}
 		public void actionPerformed(ActionEvent e) {
-			comboBox_1.setSelectedIndex(0);
+			comboBox_1.setSelectedIndex(2);
 			comboBox.setSelectedIndex(1);
-			comboBox_2.setSelectedIndex(2);
+			comboBox_2.setSelectedIndex(0);
 			comboBox_6.setSelectedIndex(0);
 			comboBox_7.setSelectedIndex(0);
 			comboBox_8.setSelectedIndex(0);
@@ -374,7 +374,9 @@ public class EnigmaGUI {
 			if(i == 0)
 				enigma.resetPlugboard();
 			char a = textField.getText().toUpperCase().charAt(0);
+			textField.setText("");
 			char b = textField_1.getText().toUpperCase().charAt(0);
+			textField_1.setText("");
 			if(enigma.checkPair(a, b) == true && i < 10)
 			{
 				enigma.customizePlugboard(a, b);
