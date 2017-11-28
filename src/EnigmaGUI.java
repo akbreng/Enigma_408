@@ -167,9 +167,9 @@ public class EnigmaGUI {
 		String[] RotorList = {"I", "II", "III", "IV", "V"};
 		String[] RotorStart = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
 		
-		comboBox_1 = new JComboBox(RotorList);
-		panel_4.add(comboBox_1);
-		comboBox_1.setSelectedIndex(enigma.getDisk(2));
+		comboBox_2 = new JComboBox(RotorList);
+		panel_4.add(comboBox_2);
+		comboBox_2.setSelectedIndex(enigma.getDisk(2));
 		
 		
 		//far middle rotor number label and comboBox
@@ -184,9 +184,9 @@ public class EnigmaGUI {
 		JLabel lblNewLabel_3 = new JLabel("Rotor 3");
 		panel_4.add(lblNewLabel_3);
 		
-		comboBox_2 = new JComboBox(RotorList);
-		panel_4.add(comboBox_2);
-		comboBox_2.setSelectedIndex(enigma.getDisk(0));
+		comboBox_1 = new JComboBox(RotorList);
+		panel_4.add(comboBox_1);
+		comboBox_1.setSelectedIndex(enigma.getDisk(0));
 		
 		//--------------
 		//Panel for rotor positions and labels
@@ -226,7 +226,7 @@ public class EnigmaGUI {
 		lblPlugboard.setBounds(58, 299, 273, 25);
 		Welcome_Frame.getContentPane().add(lblPlugboard);
 		
-		JPanel panel_3 = new JPanel();
+		JPanel panel_3 = new JPanel();;
 		panel_3.setBounds(68, 337, 263, 336);
 		Welcome_Frame.getContentPane().add(panel_3);
 		panel_3.setLayout(null);
@@ -334,13 +334,12 @@ public class EnigmaGUI {
 			putValue(SHORT_DESCRIPTION, "Encrypt the input");
 		}
 		public void actionPerformed(ActionEvent e) {
-			enigma.setDisk(0, comboBox_1.getSelectedIndex(), comboBox_6.getSelectedIndex());
+			enigma.setDisk(0, comboBox_1.getSelectedIndex(), comboBox_8.getSelectedIndex());
 			enigma.setDisk(1, comboBox.getSelectedIndex(), comboBox_7.getSelectedIndex());
-			enigma.setDisk(2, comboBox_2.getSelectedIndex(), comboBox_8.getSelectedIndex());
+			enigma.setDisk(2, comboBox_2.getSelectedIndex(), comboBox_6.getSelectedIndex());
 			enigma.fillPlugboard();
 			textArea_1.setText(enigma.Encrypt(textArea.getText().toUpperCase()));
 			
-			System.out.println(enigma.getPlugboard());
 		}
 	}
 	private class SwingAction_1 extends AbstractAction {
@@ -397,7 +396,6 @@ public class EnigmaGUI {
 			for(int i = 0; i < 10; i++)
 			{
 				labels[i].setText(Integer.toString(i+1));
-				i++;
 			}
 		}
 	}
